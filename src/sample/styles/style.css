@@ -27,3 +27,9 @@
 .button:pressed {
     -fx-background-color: #B04BA0;
 }
+
+.text-test{
+    -fx-background-color: #343434;
+    -fx-border-color: #343434;
+
+}

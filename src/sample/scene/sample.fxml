@@ -51,12 +51,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField focusTraversable="false" layoutX="345.0" layoutY="100.0" promptText="login" styleClass="text-input" stylesheets="@../styles/style.css">
+      <TextField fx:id="login_auth" focusTraversable="false" layoutX="345.0" layoutY="100.0" promptText="login" styleClass="text-input" stylesheets="@../styles/style.css">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <PasswordField focusTraversable="false" layoutX="345.0" layoutY="164.0" prefHeight="36.0" prefWidth="199.0" promptText="password">
+      <PasswordField fx:id="pass_auth" focusTraversable="false" layoutX="345.0" layoutY="164.0" prefHeight="36.0" prefWidth="199.0" promptText="password">
          <font>
             <Font size="14.0" />
          </font>
@@ -69,5 +69,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <TextField fx:id="attention" focusTraversable="false" layoutX="328.0" layoutY="325.0" prefHeight="42.0" prefWidth="242.0" styleClass="text-test" stylesheets="@../styles/style.css">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
