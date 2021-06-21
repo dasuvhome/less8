@@ -1,5 +1,7 @@
 package sample;
 
+import sample.model.User;
+
 import java.sql.*;
 
 public class BD {
@@ -50,4 +52,36 @@ public class BD {
 
      }
 
+    public boolean regEditUser(User user) throws SQLException, ClassNotFoundException {
+
+            String sql = "UPDATE `users` SET `login` = ?,  `email` = ?, `password` = ? WHERE `id` = ?;";
+            PreparedStatement psmt = getDBConnection().prepareStatement(sql);
+            int id = user.getId();
+            String login = user.getLogin();
+            String email = user.getEmail();
+            String password = user.getPassword();
+            psmt.setString(1, login);
+            psmt.setString(2, email);
+            psmt.setString(3, password);
+            psmt.setInt(4, id);
+            psmt.executeUpdate();
+            return true;
+
+
+    }
+
+    public User createUser(User user) throws SQLException, ClassNotFoundException {
+
+        Statement statement = getDBConnection().createStatement();
+        String sql = "SELECT * FROM `users` WHERE `id` = '" + 14 + "'";
+        ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+        user.setId(resultSet.getInt("id"));
+        user.setLogin(resultSet.getString("login"));
+        user.setEmail(resultSet.getString("email"));
+        user.setPassword(resultSet.getString("password"));
+            }
+
+        return user;
+    }
 }
