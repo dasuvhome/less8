@@ -1,5 +1,9 @@
 package sample.controllers;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.math.BigInteger;
 import java.net.URL;
 import java.security.MessageDigest;
@@ -7,11 +11,18 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sample.BD;
+import sample.model.User;
+
 
 public class RegController {
 
@@ -120,6 +131,19 @@ public class RegController {
                     attention.setStyle("-fx-text-fill: Green");
                     attention.setText("Успешно");
 
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(getClass().getResource("/sample/scene/main.fxml"));
+                    Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    primaryStage.setTitle("Программа");
+                    primaryStage.setScene(new Scene(root, 600, 400));
+                    primaryStage.show();
+                    createFileAutorization();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
 
                 } else {
                     attention.setText("Не найден");
@@ -154,5 +178,11 @@ public class RegController {
                 md5Hex = 0 + md5Hex;
             }
         return md5Hex;
+    }
+    private void createFileAutorization() throws IOException {
+        FileOutputStream fos = new FileOutputStream("user.settings");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(new User(login_auth.getCharacters().toString()));
+        oos.close();
     }
 }

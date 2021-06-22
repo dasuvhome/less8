@@ -1,10 +1,16 @@
 package sample.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private int id;
     private String login;
     private String email;
     private String password;
+
+    public User(String login) {
+        this.login = login;
+    }
 
     public User(String login, String email, String password) {
         this.login = login;
