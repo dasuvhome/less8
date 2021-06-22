@@ -57,7 +57,7 @@ public class EditRegController {
                 user.setEmail(email_edit_reg.getCharacters().toString());
                 user.setPassword(RegController.md5(pass_edit_reg.getCharacters().toString()));
 
-                boolean isEditReg = bd.regEditUser(user);
+                boolean isEditReg = bd.checkUserExistForBD(user);
 
 
                 if(isEditReg){
