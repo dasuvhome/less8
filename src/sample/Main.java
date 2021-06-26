@@ -22,7 +22,7 @@ public class Main extends Application {
             FileInputStream fis = new FileInputStream("user.settings");
             ObjectInputStream ois = new ObjectInputStream(fis);
             User user = (User) ois.readObject();
-            if (user.getLogin().equals("")){
+            if (!user.getLogin().equals("")){
                 scene = "main.fxml";
             }
         }

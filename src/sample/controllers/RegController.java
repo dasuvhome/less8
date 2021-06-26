@@ -126,10 +126,7 @@ public class RegController {
             }
 
             if (isAuth) {
-                    login_auth.setText("");
-                    pass_auth.setText("");
-                    attention.setStyle("-fx-text-fill: Green");
-                    attention.setText("Успешно");
+
 
                 Parent root = null;
                 try {
@@ -139,6 +136,10 @@ public class RegController {
                     primaryStage.setScene(new Scene(root, 600, 400));
                     primaryStage.show();
                     createFileAutorization();
+                    login_auth.setText("");
+                    pass_auth.setText("");
+                    attention.setStyle("-fx-text-fill: Green");
+                    attention.setText("Успешно");
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -182,6 +183,8 @@ public class RegController {
     private void createFileAutorization() throws IOException {
         FileOutputStream fos = new FileOutputStream("user.settings");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
+        User user = (new User(login_auth.getCharacters().toString()));
+        String userLogin = user.getLogin();
         oos.writeObject(new User(login_auth.getCharacters().toString()));
         oos.close();
     }

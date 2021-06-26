@@ -100,4 +100,21 @@ public class BD {
         regEditUser(user);
         return true;
     }
+    public ResultSet getArticless() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT `title`, `intro` FROM articles";
+        Statement statement = getDBConnection().createStatement();
+        ResultSet res = statement.executeQuery(sql);
+        return res;
+    }
+    public void addArticle(String title, String intro, String text) throws SQLException, ClassNotFoundException {
+        String sql = "INSERT INTO `articles`(`title`, `intro`, `text`, `views`) VALUES(?,?,?,?)";
+        PreparedStatement pstmt = getDBConnection().prepareStatement(sql);
+        pstmt.setString(1, title);
+        pstmt.setString(2, intro);
+        pstmt.setString(3, text);
+        pstmt.setInt(4, 15);
+
+        pstmt.executeUpdate();
+    }
+
 }
