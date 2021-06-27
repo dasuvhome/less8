@@ -34,7 +34,7 @@
             <VBox fx:id="paneVBox" prefHeight="289.0" prefWidth="600.0" style="-fx-background-color: #343434;" />
          </content>
       </ScrollPane>
-      <Button fx:id="btn_add_atricle" layoutX="28.0" layoutY="43.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="153.0" stylesheets="@../styles/style.css" text="Добавить статью" textFill="WHITE">
+      <Button fx:id="btn_add_atricle" layoutX="29.0" layoutY="43.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="153.0" stylesheets="@../styles/style.css" text="Добавить статью" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

@@ -101,7 +101,7 @@ public class BD {
         return true;
     }
     public ResultSet getArticless() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT `title`, `intro` FROM articles";
+        String sql = "SELECT `*` FROM articles";
         Statement statement = getDBConnection().createStatement();
         ResultSet res = statement.executeQuery(sql);
         return res;
@@ -116,5 +116,7 @@ public class BD {
 
         pstmt.executeUpdate();
     }
+
+
 
 }

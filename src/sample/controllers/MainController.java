@@ -39,7 +39,8 @@ public class MainController {
     @FXML
     private VBox paneVBox;
     private BD bd = new BD();
-
+    private  int idI = 0;
+    public static int idIntent;
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
         ResultSet res = bd.getArticless();
@@ -49,9 +50,30 @@ public class MainController {
                     node = FXMLLoader.load(getClass().getResource("/sample/scene/articles.fxml"));
                     Label title = (Label)node.lookup("#title");
                     Label intro = (Label)node.lookup("#intro");
+                    Label id = (Label) node.lookup("#id");
                     title.setText(res.getString("title"));
                     intro.setText(res.getString("intro"));
+                    idI = res.getInt("id");
+                    id.setText(""+idI);
                        final Node nodeSet = node;
+                       node.setOnMouseClicked(event->{
+                            idIntent = Integer.parseInt(id.getText());
+
+                           Parent root = null;
+
+
+                           try {
+                               root = FXMLLoader.load(getClass().getResource("/sample/scene/viewArticles.fxml"));
+                               Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                               primaryStage.setTitle("Программа");
+                               primaryStage.setScene(new Scene(root, 600, 400));
+                               primaryStage.show();
+                           } catch (IOException e) {
+                               e.printStackTrace();
+                           }
+
+
+                       });
                     node.setOnMouseEntered(event-> {
                         nodeSet.setStyle("-fx-background-color: #707173");
                     });
