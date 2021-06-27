@@ -34,11 +34,11 @@ public class ViewArticleController {
     private TextArea area_text_intro;
 
     BD bd = new BD();
-        MainController mc = new MainController();
+
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
-            int i = mc.idIntent;
+            int i = MainController.idIntent;
            ResultSet res =  bd.getArticless();
            while(res.next()){
                int id = res.getInt("id");
